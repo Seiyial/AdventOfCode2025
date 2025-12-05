@@ -1,6 +1,6 @@
 from .shared import Knob
 
-def solve_01_1(input_data: str) -> None:
+def solve(input_data: str) -> None:
 	lines: list[str] = input_data.splitlines()
 
 	knob = Knob()

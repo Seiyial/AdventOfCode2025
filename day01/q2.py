@@ -1,6 +1,6 @@
 from .shared import Knob
 
-def solve_01_2(input_data: str) -> None:
+def solve(input_data: str) -> None:
 	lines: list[str] = input_data.splitlines()
 
 	knob = Knob(reports_on_passing_0=True) # for q1 just skip this arg

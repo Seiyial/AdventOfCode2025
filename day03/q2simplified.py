@@ -1,4 +1,4 @@
-def solve_03_2(input_data: str) -> str | int | float:
+def solve(input_data: str) -> str | int | float:
 	lines = input_data.split("\n")
 	sum = 0
 	for line in lines:

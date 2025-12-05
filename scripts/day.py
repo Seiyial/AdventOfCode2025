@@ -5,7 +5,7 @@ import time
 if len(sys.argv) != 4 and len(sys.argv) != 5:
 	print("Usage: python ./scripts/day.py <day> <part> <input> [debug]")
 	print("  day: 1-12")
-	print("  part: 1 or 2")
+	print("  part: 1 or 2 or custom")
 	print("  input: i or ii")
 	print("  debug: (optional) p or d or debug")
 	sys.exit(1)
@@ -18,10 +18,14 @@ except ValueError as e:
 	print(f"Error: {e}")
 	sys.exit(1)
 
+custom_file = None
 try:
-	part = int(sys.argv[2])
-	if part not in [1, 2]:
-		raise ValueError("Part must be 1 or 2")
+	part = sys.argv[2]
+	if part not in ["1", "2"]:
+		part = sys.argv[2]
+		custom_file = f"day{day:02d}/{part}.py"
+		if not os.path.exists(custom_file):
+			raise ValueError(f"Part must be 1, 2, or a valid custom file name ('{custom_file}' not found)")
 except ValueError as e:
 	print(f"Error: {e}")
 	sys.exit(1)
@@ -46,11 +50,10 @@ if not input_data:
 	print(f"Error: Input file {input_file_path} is empty or missing.")
 	sys.exit(1)
 
-module_name = f"day{day:02d}.q{part}"
+module_name = f"day{day:02d}.{part}" if custom_file is not None else f"day{day:02d}.q{part}"
 try:
 	day_module = __import__(module_name, fromlist=[''])
-	func_name = f"solve_{day:02d}_{part}"
-	solve_function = getattr(day_module, func_name)
+	solve_function = getattr(day_module, "solve")
 	timestart = time.perf_counter_ns()
 	result = solve_function(input_data)
 	print(f"\nResult: {result}")

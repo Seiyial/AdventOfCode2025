@@ -1,4 +1,4 @@
-def solve_02_1(input_data: str) -> str:
+def solve(input_data: str) -> str:
 	nums = set()
 	for row in input_data.split(","):
 		start, end = tuple([ int(val) for val in row.split("-") ])

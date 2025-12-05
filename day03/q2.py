@@ -1,4 +1,4 @@
-def solve_03_2(input_data: str) -> str | int | float:
+def solve(input_data: str) -> str | int | float:
 	return sum(max_twelveplet([int(x) for x in list(line)]) for line in input_data.splitlines())
 
 def max_twelveplet(line: list[int]) -> int:

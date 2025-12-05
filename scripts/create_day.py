@@ -40,6 +40,6 @@ for part in [1, 2]:
 	solution_file = day_dir_full / f"q{part}.py"
 	if not solution_file.exists():
 		with open(solution_file, 'w') as f:
-			f.write(f"""def solve_{day_int:02d}_{part}(input_data: str) -> str | int | float:
+			f.write(f"""def solve(input_data: str) -> str | int | float:
 	pass
 """)

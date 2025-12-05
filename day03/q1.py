@@ -1,4 +1,4 @@
-def solve_03_1(input_data: str) -> str | int | float:
+def solve(input_data: str) -> str | int | float:
 	return sum(max_pair([int(x) for x in list(line)]) for line in input_data.splitlines())
 
 def max_pair(line: list[int]) -> int:

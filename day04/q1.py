@@ -1,6 +1,6 @@
 from collections import Counter
 
-def solve_04_1(input_data: str) -> str | int | float:
+def solve(input_data: str) -> str | int | float:
 
 	aoa = AOA([ list(rowstr) for rowstr in input_data.splitlines() ])
 	accessible = 0
